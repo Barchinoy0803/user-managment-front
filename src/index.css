@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.link.active{
+    border-bottom: 1px solid rgb(84, 84, 241);
+}
