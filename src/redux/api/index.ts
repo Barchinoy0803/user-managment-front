@@ -1,18 +1,22 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { createApi } from "@reduxjs/toolkit/query/react";
+import { validateToken } from "../../helpers";
 
 export const mainApi = createApi({
     reducerPath: "mainApi",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://user-managment-project.onrender.com",
-        prepareHeaders: (headers) => {
-            const token = localStorage.getItem("token")
-            if (token) {
+        prepareHeaders: (headers, {endpoint}) => {
+            const token = localStorage.getItem("token") || ""
+            
+            if (validateToken(token)) {
                 headers.set("Authorization", `Bearer ${token}`)
+            }else if(endpoint !== "login" && endpoint !== "register"){
+                window.location.href = "/signUp"
             }
             return headers
         }
     }),
     endpoints: () => ({}),
     tagTypes: ['USER']
-})  
+})

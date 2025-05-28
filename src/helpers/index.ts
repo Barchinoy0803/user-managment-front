@@ -7,6 +7,7 @@ export const validateToken = (token: string): boolean => {
             if (exp > now) {
                 return true
             }
+            
             localStorage.removeItem("token")
         } catch (error) {
             localStorage.removeItem("token")

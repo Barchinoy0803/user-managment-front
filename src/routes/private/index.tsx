@@ -8,4 +8,4 @@ const Private = () => {
     return validateToken(token) ? <Home/> : <Navigate to={"/signIn"}/>
 }
 
-export default memo(Private) 
+export default memo(Private)
