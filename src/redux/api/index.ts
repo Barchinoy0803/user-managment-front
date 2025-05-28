@@ -5,7 +5,7 @@ import { validateToken } from "../../helpers";
 export const mainApi = createApi({
     reducerPath: "mainApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://user-managment-project.onrender.com",
+        baseUrl: import.meta.env.VITE_BASE_URL,
         prepareHeaders: (headers, {endpoint}) => {
             const token = localStorage.getItem("token") || ""
             
