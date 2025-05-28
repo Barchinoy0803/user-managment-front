@@ -12,7 +12,7 @@ const Home = () => {
     const { data, isLoading } = useGetUsersQuery({})
     const [selectedIds, setSelectedIds] = useState<GridRowSelectionModel>();
     const [deleteUser, { isLoading: deleteLoading }] = useDeleteUsersMutation()
-    const [updateUserStatus, { isLoading: updateLoading }] = useUpdateUserStatusMutation()
+    const [updateUserStatus] = useUpdateUserStatusMutation()
 
     const handleDelete = async () => {
         await deleteUser({ ids: [...selectedIds?.ids!] })
